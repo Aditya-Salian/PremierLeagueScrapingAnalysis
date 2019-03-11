@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import re
 import requests
 import pandas as pd
+import wikipedia as wp
 import numpy as np
 import seaborn as sns
 
@@ -134,3 +135,18 @@ TeamMeanHeight = pd.DataFrame.from_dict(TeamHeight,orient='index')
 
 print(TeamMeanHeight)
 
+# Goal Difference Table of 17-18 Season
+
+#Opening HTML form page of the season
+link = wp.page("2017–18 Premier League").html().encode("UTF-8")
+#Reading the 5th table from the wikipedia page
+GDtable = pd.read_html(link)[4]
+
+#Now Dropping Unrequired Columns from the table
+GDtable.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
+
+#Renaming Columns of the Dataframe
+GDtable.columns = ["Position","Team","GD"]
+GDtable.drop([0], axis = 0, inplace = True)
+#GDtable.reset_index()
+print(GDtable)
