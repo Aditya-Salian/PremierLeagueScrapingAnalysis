@@ -151,4 +151,4 @@ GDtable.drop([0], axis = 0, inplace = True)
 #GDtable.reset_index()
 print(GDtable)
 
-#test
+#test2
