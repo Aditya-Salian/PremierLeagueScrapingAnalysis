@@ -7,7 +7,7 @@ import pandas as pd
 import wikipedia as wp
 import numpy as np
 import seaborn as sns
-
+HAHAHAHAHAHAHAAH
 'exec(%matplotlib inline)'
 
 player_name=[]
