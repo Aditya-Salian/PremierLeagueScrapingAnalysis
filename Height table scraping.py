@@ -76,9 +76,9 @@ while i < len(player_club):
             zero_ct += 1
             i += 1
             continue
-        if i == len(player_club)-1:
-            mean = sum/(ct - zero_ct)
-            TeamHeight[player_club[i-1]] = round(mean,2)
+        # if i == len(player_club)-1:
+        #     mean = sum/(ct - zero_ct)
+        #     TeamHeight[player_club[i-1]] = round(mean,2)
 
         sum += player_height[i]
 
@@ -126,6 +126,7 @@ while i < len(player_club):
 
 
 #Adding Westbrom
+TeamHeight['West Ham United'] = 181.54
 
 print(TeamHeight)
 
@@ -135,18 +136,91 @@ TeamMeanHeight = pd.DataFrame.from_dict(TeamHeight,orient='index')
 
 print(TeamMeanHeight)
 
+# Goal Difference Table of 13-14 Season
+
+
+print('''
+2013–14 Season
+
+''')
+
+
+link4 = wp.page("2013–14 Premier League").html().encode("UTF-8")
+GDtable13_14 = pd.read_html(link4)[4]
+GDtable13_14.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
+GDtable13_14.columns = ["Position","Team","GD"]
+GDtable13_14.drop([0],axis = 0,inplace = True)
+GDtable13_14.reset_index()
+print(GDtable13_14)
+
+# Goal Difference Table of 14-15 Season
+
+print('''
+
+2014–15 Season
+
+''')
+
+
+link3 = wp.page("2014–15 Premier League").html().encode("UTF-8")
+GDtable14_15 = pd.read_html(link3)[4]
+GDtable14_15.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
+GDtable14_15.columns = ["Position","Team","GD"]
+GDtable14_15.drop([0],axis = 0,inplace = True)
+GDtable14_15.reset_index()
+print(GDtable14_15)
+
+# Goal Difference Table of 15-16 Season
+
+print('''
+
+2015–16 Season
+
+''')
+
+link2 = wp.page("2015–16 Premier League").html().encode("UTF-8")
+GDtable15_16 = pd.read_html(link2)[4]
+GDtable15_16.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
+GDtable15_16.columns = ["Position","Team","GD"]
+GDtable15_16.drop([0],axis = 0,inplace = True)
+GDtable15_16.reset_index()
+print(GDtable15_16)
+
+
+# Goal Difference Table of 16-17 Season
+
+print('''
+
+2016–17 Season
+
+''')
+
+link = wp.page("2016–17 Premier League").html().encode("UTF-8")
+GDtable16_17 = pd.read_html(link)[5]
+GDtable16_17.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
+GDtable16_17.columns = ["Position","Team","GD"]
+GDtable16_17.drop([0],axis = 0,inplace = True)
+GDtable16_17.reset_index()
+print(GDtable16_17)
+
 # Goal Difference Table of 17-18 Season
+
+print('''
+2017–18 Season
+
+''')
 
 #Opening HTML form page of the season
 link = wp.page("2017–18 Premier League").html().encode("UTF-8")
 #Reading the 5th table from the wikipedia page
-GDtable = pd.read_html(link)[4]
+GDtable17_18 = pd.read_html(link)[4]
 
 #Now Dropping Unrequired Columns from the table
-GDtable.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
+GDtable17_18.drop([2,3,4,5,6,7,9,10], axis = 1,inplace = True)
 
 #Renaming Columns of the Dataframe
-GDtable.columns = ["Position","Team","GD"]
-GDtable.drop([0], axis = 0, inplace = True)
-#GDtable.reset_index()
-print(GDtable)
+GDtable17_18.columns = ["Position","Team","GD"]
+GDtable17_18.drop([0], axis = 0, inplace = True)
+print(GDtable17_18)
+
+
